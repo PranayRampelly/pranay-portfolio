@@ -17,6 +17,7 @@ export default function Contact() {
   });
 
   const [formStatus, setFormStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -28,6 +29,7 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
+      setErrorMessage("Missing required fields. Please ensure Name, Email, and Message are filled.");
       setFormStatus("error");
       setTimeout(() => setFormStatus("idle"), 3000);
       return;
@@ -49,8 +51,9 @@ export default function Contact() {
 
     if (error) {
       console.error(error);
+      setErrorMessage(`Database Error: ${error.message || "Failed to submit. Check permissions or table structure."}`);
       setFormStatus("error");
-      setTimeout(() => setFormStatus("idle"), 3000);
+      setTimeout(() => setFormStatus("idle"), 8000);
     } else {
       setFormStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
@@ -285,8 +288,8 @@ export default function Contact() {
                       exit={{ opacity: 0, height: 0 }}
                       className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-semibold flex items-center gap-2"
                     >
-                      <AlertCircle className="w-4 h-4" />
-                      <span>Missing required fields. Please ensure Name, Email, and Message are filled.</span>
+                      <AlertCircle className="w-4 h-4 shrink-0" />
+                      <span>{errorMessage}</span>
                     </motion.div>
                   )}
                 </AnimatePresence>
