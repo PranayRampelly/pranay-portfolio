@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Sora", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-dark-bg: #0C0C0C;
+  --color-primary-text: #D7E2EA;
+}
+
+/* Fluid Typography Utility */
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0C0C0C;
+}
+::-webkit-scrollbar-thumb {
+  background: #222222;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #444444;
+}
+
+selection {
+  background-color: #4F46E5;
+  color: #FFFFFF;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: #0C0C0C;
+  color: #D7E2EA;
+  font-size: 90%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0C0C0C;
+  overflow-x: hidden;
+}
