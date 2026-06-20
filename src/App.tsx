@@ -13,6 +13,7 @@ import Skills from "./components/Skills";
 import CurrentlyExploring from "./components/CurrentlyExploring";
 import Contact from "./components/Contact";
 import { ArrowUp, Code2, LucideIcon } from "lucide-react";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
   const handleScrollToTop = () => {
@@ -111,6 +112,7 @@ export default function App() {
           </span>
         </div>
       </footer>
+      <Analytics />
     </div>
   );
 }
